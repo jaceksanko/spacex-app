@@ -14,12 +14,12 @@ export default function FlightList({ launches }: Props) {
     return (<table>
         <thead>
           <tr>
-            { FLIGHT_LIST_TABLE_HEADERS.map(header => <th>{header}</th>)}
+            { FLIGHT_LIST_TABLE_HEADERS.map((header, index) => <th key={`${header}-${index}`}>{header}</th>)}
           </tr>
         </thead>
         <tbody>
-          {launches.map(launch => (
-            <LaunchRow launch={launch} />
+          {launches.map((launch, index) => (
+            <LaunchRow key={`LaunchRow-${launch}-${index}`} launch={launch} />
           ))}
         </tbody>
       </table>);
