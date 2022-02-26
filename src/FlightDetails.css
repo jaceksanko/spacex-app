@@ -1,0 +1,9 @@
+.flight-details__img {
+    max-width: 320px;
+    padding: 10px;
+    height: fit-content;
+}
+.flight-details__img-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

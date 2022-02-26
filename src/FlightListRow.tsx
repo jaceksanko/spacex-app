@@ -1,4 +1,5 @@
 import { Launch } from "./FlightListTypes";
+import { Link } from "react-router-dom";
 
 type Props = {
   launch: Launch;
@@ -22,6 +23,11 @@ export default function LaunchRow({ launch }: Props) {
           alt={launch.ships[0]?.name}
           width="100px"
         />
+      </td>
+      <td>
+        <Link to={`/flight-details/${launch.id}`}>
+          <button>Detale lotu</button>
+        </Link>
       </td>
     </tr>
   );

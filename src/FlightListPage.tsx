@@ -43,7 +43,17 @@ export default function FlightListPage() {
       variables: { missionName, offset: data.launchesPast.length },
     });
     setPrevData(data);
-  }, [fetchMore, data]);
+  }, [missionName, fetchMore, data]);
+
+  const FlightListAndButton = () => (
+    <>
+      <FlightList launches={data.launchesPast} />
+      {(prevData.launchesPast.length !== data?.launchesPast.length ||
+        data.length === 10) && (
+        <button onClick={handleClickButton}>Więcej</button>
+      )}
+    </>
+  );
 
   return (
     <>
@@ -55,11 +65,7 @@ export default function FlightListPage() {
           setMissionName(value);
         }}
       />
-      {!loading && <FlightList launches={data.launchesPast} />}
-      {(prevData.launchesPast.length !== data?.launchesPast.length ||
-        data.length === 10) && (
-        <button onClick={handleClickButton}>Więcej</button>
-      )}
+      {loading ? <p>Loading ...</p> : <FlightListAndButton />}
     </>
   );
 }
